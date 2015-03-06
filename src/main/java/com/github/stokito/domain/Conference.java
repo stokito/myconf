@@ -1,8 +1,6 @@
 package com.github.stokito.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -11,14 +9,16 @@ public class Conference {
     @Id @GeneratedValue
     private int id;
     private String name;
+    @Column(columnDefinition="text")
     private String description;
 
     private Date startDate;
     private Date endDate;
 
     private String address;
+    @Column(columnDefinition="image")
     private byte[] logo;
-
+    @ManyToOne
     private List<Sponsor> sponsors;
     private List<User> participants;
     private List<User> organizers;
