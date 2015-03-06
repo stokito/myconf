@@ -3,6 +3,7 @@ package com.github.stokito.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.net.URL;
 import java.util.List;
 
 @Entity
@@ -17,8 +18,8 @@ public class Talk {
     private Speaker speaker;
     private TalkStatus status;
     private List<User> participants;
-    private String video;
-    private String presentation;
+    private URL video;
+    private URL presentation;
 
 
 }
