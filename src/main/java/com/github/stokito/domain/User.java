@@ -8,7 +8,7 @@ public class User {
     @Id
     @GeneratedValue
     private int id;
-    @OneToMany
+    @ManyToOne
     private Role role;
     private String email;
     private String password;
