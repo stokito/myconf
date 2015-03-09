@@ -2,6 +2,7 @@ package com.github.stokito.domain;
 
 import javax.persistence.*;
 import java.net.URL;
+import java.util.List;
 
 @Entity
 public class Sponsor {
@@ -13,8 +14,10 @@ public class Sponsor {
     private SponsorType type;
     private String description;
     private URL url;
+
     private byte[] logo;
-//    private List<User> users;
+    @OneToMany
+    private List<User> users;
 
     public int getId() {
         return id;

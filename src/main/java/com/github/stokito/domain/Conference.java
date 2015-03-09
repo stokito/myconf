@@ -3,33 +3,39 @@ package com.github.stokito.domain;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Conference {
     @Id @GeneratedValue
     private int id;
     private String name;
-    @Column(columnDefinition="text")
+//    @Column(columnDefinition="text")
     private String description;
 
     private Date startDate;
     private Date endDate;
-
-    private String address;
-    @Column(columnDefinition="image")
+    @OneToOne
+    private Address address;
+//    @Column(columnDefinition="LONGVARBINARY")
     private byte[] logo;
-    @ManyToOne
-    private List<Sponsor> sponsors;
+    @OneToMany
+    private Set<Sponsor> sponsors;
+    @OneToMany
     private List<User> participants;
+    @OneToMany
     private List<User> organizers;
+    @OneToMany
     private List<User> committee;
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name="conference")
     private List<Talk> talks;
 
-    public List<Sponsor> getSponsors() {
+    public Set<Sponsor> getSponsors() {
         return sponsors;
     }
 
-    public void setSponsors(List<Sponsor> sponsors) {
+    public void setSponsors(Set<Sponsor> sponsors) {
         this.sponsors = sponsors;
     }
 
@@ -73,11 +79,11 @@ public class Conference {
         this.endDate = endDate;
     }
 
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 

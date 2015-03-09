@@ -17,9 +17,9 @@ public class Speaker {
     private String country;
     @Column(length = 20)
     private String company;
-    @Column(columnDefinition="text")
+//    @Column(columnDefinition="text")
     private String descritpion;
-    @Column(columnDefinition="image")
+//    @Column(columnDefinition="image")
     private byte[] photo;
 
     public int getId() {

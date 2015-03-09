@@ -1,8 +1,6 @@
 package com.github.stokito.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.net.URL;
 import java.util.List;
 
@@ -10,13 +8,16 @@ import java.util.List;
 public class Talk {
     @Id @GeneratedValue
     private int id;
-
+    @ManyToOne
+    private Conference conference;
     private String name;
     private String description;
     private String format;
     private String language;
+    @ManyToOne
     private Speaker speaker;
     private TalkStatus status;
+    @OneToMany
     private List<User> participants;
     private URL video;
     private URL presentation;
