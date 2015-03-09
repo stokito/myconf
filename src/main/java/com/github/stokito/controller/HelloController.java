@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,10 +34,10 @@ public class HelloController {
 
     @RequestMapping(value = "/addConf", method = RequestMethod.POST)
     @Transactional
-    public String addConf(HttpServletRequest request) {
+    public String addConf(@RequestParam("name") String name, @RequestParam("description") String description) {
         Conference conference = new Conference();
-        conference.setName(request.getParameter("ConfName"));
-        conference.setDescription(request.getParameter("Description"));
+        conference.setName(name);
+        conference.setDescription(description);
         conferenceService.save(conference);
         return "redirect:/";
     }
