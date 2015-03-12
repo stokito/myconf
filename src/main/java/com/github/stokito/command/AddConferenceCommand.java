@@ -6,9 +6,9 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 public class AddConferenceCommand {
     @NotEmpty
-    public String name;
+    private String name;
     @NotEmpty
-    public String description;
+    private String description;
 
     public String getName() {
         return name;

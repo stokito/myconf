@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
@@ -30,10 +29,10 @@ public class HelloController {
 
     @RequestMapping("/")
     @Transactional
-    public ModelAndView index(HttpServletRequest request) {
+    public ModelAndView index() {
         ModelAndView maw = new ModelAndView("hello");
         AddConferenceCommand command = new AddConferenceCommand();
-        command.description = "ololo";
+        command.setDescription("");
         maw.addObject("addConf", command);
         return maw;
     }
@@ -42,8 +41,8 @@ public class HelloController {
     @Transactional
     public String addConf(@Valid @ModelAttribute("addConf") AddConferenceCommand conferenceForm) {
         Conference conference = new Conference();
-        conference.setName(conferenceForm.name);
-        conference.setDescription(conferenceForm.description);
+        conference.setName(conferenceForm.getName());
+        conference.setDescription(conferenceForm.getDescription());
         conferenceService.save(conference);
         return "redirect:/";
     }
