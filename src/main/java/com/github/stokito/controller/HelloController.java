@@ -37,6 +37,10 @@ public class HelloController {
         return maw;
     }
 
+    @RequestMapping("login")
+    public String login() {return "login";}
+
+
     @RequestMapping(value = "/addConf", method = RequestMethod.POST)
     @Transactional
     public String addConf(@Valid @ModelAttribute("addConf") AddConferenceCommand conferenceForm) {

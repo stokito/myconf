@@ -53,8 +53,6 @@
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-config</artifactId>
             </dependency>
-
-
         <!--Tomcat-->
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
